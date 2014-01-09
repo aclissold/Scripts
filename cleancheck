@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# cleancheck recursively looks for Git repos whose state is anything other than
+# clean, and halts if it finds one so manual modifications can be made to it.
+
+cwd=$(pwd)
+find * -type d | while read line
+do
+    cd "$line" ; git status -z > /dev/null 2>&1 &&
+        if [[ -n $(git status -z) ]]
+        then
+            echo $line is not clean.
+            exit
+        fi
+        cd "$cwd"
+done
