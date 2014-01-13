@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [[ -n $(ls -l /usr/lib/jvm/default-java | grep openjdk) ]]
+then
+    cd /usr/lib/jvm
+    sudo unlink default-java
+    sudo ln -s jdk1.7.0_45 default-java
+    echo default-java now points to jdk1.7.0_45.
+else
+    cd /usr/lib/jvm
+    sudo unlink default-java
+    sudo ln -s java-7-openjdk-amd64 default-java
+    echo default-java now points to java-7-openjdk.
+fi
