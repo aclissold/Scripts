@@ -1,0 +1,3 @@
+[submodule "PySpotifyInfo"]
+	path = PySpotifyInfo
+	url = https://github.com/funayman/PySpotifyInfo
