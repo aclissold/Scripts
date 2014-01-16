@@ -1,14 +1,14 @@
 #!/bin/bash
 
-if [[ -n $(ls -l /usr/lib/jvm/default-java | grep openjdk) ]]
+if [[ -n $(ls -l $HOME/.default-java | grep openjdk) ]]
 then
-    cd /usr/lib/jvm
-    sudo unlink default-java
-    sudo ln -s jdk1.7.0_45 default-java
-    echo default-java now points to jdk1.7.0_45.
+    cd
+    unlink .default-java
+    ln -s /usr/local/jdk1.7.0_51 .default-java
+    echo '$JAVA_HOME now points to Oracle Java.'
 else
-    cd /usr/lib/jvm
-    sudo unlink default-java
-    sudo ln -s java-7-openjdk-amd64 default-java
-    echo default-java now points to java-7-openjdk.
+    cd
+    unlink .default-java
+    ln -s /usr/lib/jvm/java-7-openjdk-amd64/ .default-java
+    echo '$JAVA_HOME now points to OpenJDK.'
 fi
