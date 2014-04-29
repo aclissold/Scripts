@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Quickly search Wikipedia from the command line using DNS.
+dig +short txt ${1}.wp.dg.cx
