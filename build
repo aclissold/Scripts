@@ -1,0 +1,22 @@
+#!/bin/bash
+
+cd ~/uPortal/uportal
+
+for arg in "$@"
+do
+    if [[ $arg == "uportal" ]]; then
+        t stop
+        groovy -Dbuild.portlets.skip=true build.groovy &&
+        t start
+    elif [[ $arg == "portlets" ]]; then
+        t stop
+        groovy -Dbuild.portal.skip=true build.groovy &&
+        t start
+    elif [[ $arg == "init" ]]; then
+        t stop
+        groovy -Dbuild.ant.target="clean initportal" build.groovy &&
+        t start
+    else
+        groovy -Dbuild.target.portlet=$arg build.groovy
+    fi
+done
