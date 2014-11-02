@@ -4,4 +4,4 @@
 # on my specific screen.
 
 window=`xdotool getactivewindow`
-wmctrl -i -r $window -e 0,720,0,644,716
+wmctrl -i -r $window -e 0,760,0,610,707
